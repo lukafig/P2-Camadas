@@ -52,8 +52,8 @@ def main():
         print("recebidos{}\n\n".format(received))
         print("recebeu {} bytes".format(contador))
 
-
-        com1.sendData(contador)
+        contadorBytes = contador.to_bytes(2, byteorder="big")
+        com1.sendData(contadorBytes)
         print(f"enviou {contador} bytes")
             
     
