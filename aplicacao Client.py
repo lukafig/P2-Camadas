@@ -38,15 +38,15 @@ def main():
 
         txBuffer = []
         n = randint(10,30)
-        comandos = [("00 00 00 00"),
-                    ("00 00 FF 00"),
-                    ("FF 00 00"),
-                    ("00 FF 00"),
-                    ("00 00 FF"),
-                    ("00 FF"),
-                    ("FF 00"),
-                    ("00"),
-                    ("FF")]
+        comandos = [b'\x00\x00\x00\x00',
+                    b'\x00\x00\xFF\x00',
+                    b'\xFF\x00\x00',
+                    b'\x00\xFF\x00',
+                    b'\x00\x00\xFF',
+                    b'\x00\xFF',
+                    b'\xFF\x00',
+                    b'\x00',
+                    b'\xFF']
         
         len_escolhido = []
 
