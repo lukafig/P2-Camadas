@@ -16,6 +16,13 @@ start_byte = b'\x12'
 end_byte = b'\x13'
 received = []
 
+def split(msg):
+    msg = bytearray(msg)
+    spl = msg.split(b'\x14')
+    while b'' in spl:
+        spl.remove(b'')
+    return spl
+
 def main():
     try:
         print("Iniciou o main")
@@ -30,8 +37,10 @@ def main():
         # Sacrificio
         print("esperando 1 byte de sacrifício")
         rxBuffer, nRx = com1.getData(1)
+        print("recebeu {}".format(rxBuffer))    
         com1.rx.clearBuffer()
         time.sleep(.1)
+        print("recebeu {}".format(rxBuffer))
 
         contador = 1
         Recebendo = True
@@ -48,6 +57,8 @@ def main():
                     contador+=1
             if rxBuffer  == end_byte:
                 Recebendo = False
+                received = split(received)
+                break
 
         print("recebidos{}\n\n".format(received))
         print("recebeu {} bytes".format(contador))
